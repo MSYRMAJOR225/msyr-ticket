@@ -1,36 +1,193 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MSYR TICKET - LA SOIREE IMMORTELLE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MSYR TICKET - MASKING PROD</title>
+
 <style>
-body{margin:0;background:#101010;color:white;font-family:Arial;text-align:center}
-header{background:#870000;padding:25px}
-h1{color:#ffcc00;margin:0;font-size:28px}
-.card{background:white;color:#222;padding:20px;border-radius:15px;margin:15px;max-width:500px;margin-left:auto;margin-right:auto}
-button{padding:15px 20px;border:0;border-radius:10px;font-weight:bold;width:95%;margin:8px 0;cursor:pointer;font-size:16px}
-.wave{background:#1dc4f2;color:white}
-.mtn{background:#ffcc00;color:black}
-.wa{background:#25D366;color:white}
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#111;
+ color:white;
+ text-align:center;
+}
+header{
+ background:#ffcc00;
+ color:black;
+ padding:22px;
+}
+header h1{margin:0;font-size:30px}
+.card,.pay{
+ margin:16px;
+ padding:22px;
+ border-radius:15px;
+}
+.card{background:#242424}
+.pay{
+ background:#ffcc00;
+ color:black;
+}
+h2{color:#ffcc00}
+.pay h2{color:black}
+.number{
+ font-size:21px;
+ font-weight:bold;
+}
+.method{
+ background:#fff;
+ color:#111;
+ padding:15px;
+ border-radius:12px;
+ margin:12px 0;
+}
+button{
+ border:0;
+ padding:15px;
+ border-radius:10px;
+ width:100%;
+ font-size:16px;
+ font-weight:bold;
+ cursor:pointer;
+ background:#25D366;
+ color:white;
+}
+.copy{
+ background:#222;
+ margin-top:8px;
+}
+a{color:white;text-decoration:none}
+.price{
+ font-size:28px;
+ color:#ffcc00;
+ font-weight:bold;
+}
+footer{padding:22px;color:#aaa}
 </style>
 </head>
+
 <body>
+
 <header>
-<h1>MASKING PROD</h1>
-<h2>LA SOIREE IMMORTELLE DU CHEF BANDIT</h2>
-<p>MSYR MAJOR - 24 DECEMBRE 2026</p>
-<p>MAQUIS PETIT PARIS DE GLANLE</p>
+<h1>🎟️ MSYR TICKET</h1>
+<p><strong>MASKING PROD PRÉSENTE</strong></p>
 </header>
+
+<h2>MSYR MAJOR</h2>
+
 <div class="card">
-<h2>🎟️ TON TICKET : 2 500 FCFA</h2>
-<p><b>ETAPE 1 :</b> Paie avec Wave ou MTN</p>
-<p><b>ETAPE 2 :</b> Envoie la capture sur WhatsApp</p>
-<button class="wave" onclick="window.location.href='https://pay.wave.com/m/M_ci_oL8x8M3hH/c'">💙 PAYER AVEC WAVE - 2500 FCFA</button>
-<button class="mtn" onclick="alert('Envoie 2500 FCFA au 07 07 07 07 07 MTN MoMo puis envoie la capture sur WhatsApp')">💛 PAYER AVEC MTN MOMO - 2500 FCFA</button>
-<button class="wa" onclick="window.location.href='https://wa.me/2250707070707?text=Bonjour, jai paye mon ticket MSYR MAJOR 2500 FCFA, voici ma capture' ">💬 J'AI PAYE, J'ENVOIE MA PREUVE SUR WHATSAPP</button>
-<p>Le ticket te sera envoye apres verification.</p>
+<h3>LA SOIRÉE IMMORTELLE DU CHEF BANDIT</h3>
+
+<p>
+📅 24 Décembre 2026<br><br>
+📍 Maquis Petit Paris de Glanlé<br><br>
+🕗 À partir de 20h
+</p>
+
+<div class="price">2 500 FCFA</div>
+<p>Prix du ticket</p>
 </div>
-<footer>MASKING PROD © 2026</footer>
+
+<div class="pay">
+
+<h2>💳 PAIEMENT DES TICKETS</h2>
+
+<div class="method">
+<h3>💙 WAVE MONEY</h3>
+
+<p class="number">05 03 66 42 66</p>
+<button class="copy"
+onclick="copier('0503664266')">
+COPIER LE NUMÉRO
+</button>
+
+<hr>
+
+<p class="number">07 49 20 16 97</p>
+<button class="copy"
+onclick="copier('0749201697')">
+COPIER LE NUMÉRO
+</button>
+</div>
+
+<div class="method">
+<h3>💛 MTN MOBILE MONEY</h3>
+
+<p class="number">05 03 66 42 66</p>
+<button class="copy"
+onclick="copier('0503664266')">
+COPIER LE NUMÉRO
+</button>
+</div>
+
+<p>
+Effectue ton paiement et conserve ta preuve.
+</p>
+
+<p>
+Ton ticket sera délivré après vérification personnelle
+par MASKING PROD.
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>🎟️ ACHÈTE TON TICKET ICI</h2>
+
+<p>
+Contacte MASKING PROD sur WhatsApp
+pour envoyer ta preuve de paiement.
+</p>
+
+<a href="https://wa.me/225749201697?text=Bonjour%20MSYR%20TICKET%2C%20je%20veux%20acheter%20un%20ticket%20de%202500%20FCFA%20pour%20la%20Soir%C3%A9e%20Immortelle%20du%20Chef%20Bandit.">
+
+<button>ACHÈTE TON TICKET ICI</button>
+
+</a>
+
+<p>WhatsApp : +225 07 49 20 16 97</p>
+
+</div>
+
+<div class="card">
+
+<h2>📷 CONTRÔLE DES TICKETS</h2>
+
+<p>
+Chaque client recevra un QR Code personnel
+après confirmation de son paiement.
+</p>
+
+<p>
+À l'entrée, MASKING PROD scannera le ticket
+pour vérifier sa validité.
+</p>
+
+<p>
+✅ TICKET VALIDE<br><br>
+❌ DÉJÀ UTILISÉ<br><br>
+❌ TICKET INVALIDE
+</p>
+
+</div>
+
+<footer>
+MSYR TICKET © 2026<br>
+Propriété de MASKING PROD<br>
+MSYR MAJOR
+</footer>
+
+<script>
+function copier(numero){
+ navigator.clipboard.writeText(numero)
+ .then(()=>alert("Numéro copié : "+numero))
+ .catch(()=>alert("Copie impossible. Voici le numéro : "+numero));
+}
+</script>
+
 </body>
 </html>
