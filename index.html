@@ -3,70 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MSYR TICKET - ADMIN</title>
-<script src="https://unpkg.com/html5-qrcode"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<title>MSYR TICKET - LA SOIREE IMMORTELLE</title>
 <style>
 body{margin:0;background:#101010;color:white;font-family:Arial;text-align:center}
-header{background:#870000;padding:20px}
-h1{color:#ffcc00;margin:0}
-main{padding:15px;max-width:500px;margin:auto}
-.card{background:white;color:#222;padding:20px;border-radius:15px;margin:15px 0}
-input,select{width:95%;padding:13px;margin:8px 0;border:1px solid #ccc;border-radius:8px}
-button{padding:13px 18px;border:0;border-radius:8px;background:#b00000;color:white;font-weight:bold;margin:7px;cursor:pointer}
-.green{background:#168c45}
-#qr{display:flex;justify-content:center;margin:15px}
-.result{padding:15px;border-radius:10px;margin-top:12px;font-weight:bold}
-.ticket-item{background:#f2f2f2;padding:10px;border-radius:8px;margin:8px 0;text-align:left;font-size:14px}
-footer{padding:20px;color:#aaa}
+header{background:#870000;padding:25px}
+h1{color:#ffcc00;margin:0;font-size:28px}
+.card{background:white;color:#222;padding:20px;border-radius:15px;margin:15px;max-width:500px;margin-left:auto;margin-right:auto}
+button{padding:15px 20px;border:0;border-radius:10px;font-weight:bold;width:95%;margin:8px 0;cursor:pointer;font-size:16px}
+.wave{background:#1dc4f2;color:white}
+.mtn{background:#ffcc00;color:black}
+.wa{background:#25D366;color:white}
 </style>
 </head>
 <body>
 <header>
 <h1>MASKING PROD</h1>
-<h2>MSYR TICKET - ADMIN</h2>
-<p>24 DECEMBRE 2026 - GLANLE</p>
+<h2>LA SOIREE IMMORTELLE DU CHEF BANDIT</h2>
+<p>MSYR MAJOR - 24 DECEMBRE 2026</p>
+<p>MAQUIS PETIT PARIS DE GLANLE</p>
 </header>
-<main>
 <div class="card">
-<h2>1. DELIVRER UN TICKET</h2>
-<p>Verifie d'abord que le paiement est bien recu.</p>
-<input id="clientName" placeholder="Nom du client">
-<input id="clientPhone" placeholder="Telephone du client">
-<select id="paymentMethod">
-<option value="WAVE">Wave Money</option>
-<option value="MTN">MTN Mobile Money</option>
-</select>
-<button class="green" onclick="createTicket()">CONFIRMER PAIEMENT + CREER TICKET</button>
-<div id="ticketResult"></div>
-<div id="qr"></div>
-<button onclick="sendWhatsApp()" id="waBtn" style="display:none;background:#25D366">ENVOYER SUR WHATSAPP</button>
+<h2>🎟️ TON TICKET : 2 500 FCFA</h2>
+<p><b>ETAPE 1 :</b> Paie avec Wave ou MTN</p>
+<p><b>ETAPE 2 :</b> Envoie la capture sur WhatsApp</p>
+<button class="wave" onclick="window.location.href='https://pay.wave.com/m/M_ci_oL8x8M3hH/c'">💙 PAYER AVEC WAVE - 2500 FCFA</button>
+<button class="mtn" onclick="alert('Envoie 2500 FCFA au 07 07 07 07 07 MTN MoMo puis envoie la capture sur WhatsApp')">💛 PAYER AVEC MTN MOMO - 2500 FCFA</button>
+<button class="wa" onclick="window.location.href='https://wa.me/2250707070707?text=Bonjour, jai paye mon ticket MSYR MAJOR 2500 FCFA, voici ma capture' ">💬 J'AI PAYE, J'ENVOIE MA PREUVE SUR WHATSAPP</button>
+<p>Le ticket te sera envoye apres verification.</p>
 </div>
-
-<div class="card">
-<h2>2. SCANNER UN TICKET</h2>
-<button onclick="startScanner()">OUVRIR LE SCANNER</button>
-<button onclick="stopScanner()">ARRETER</button>
-<div id="reader"></div>
-<div id="scanResult"></div>
-</div>
-
-<div class="card">
-<h2>3. STATISTIQUES</h2>
-<p>Tickets delivres : <strong id="total">0</strong></p>
-<p>Entrees validees : <strong id="used">0</strong></p>
-<p>Restants : <strong id="available">0</strong></p>
-<button onclick="loadStats()">ACTUALISER</button>
-<div id="list"></div>
-<button onclick="clearAll()" style="background:#555">EFFACER TOUT</button>
-</div>
-</main>
-<footer>MASKING PROD © 2026 - NE PARTAGE PAS CE LIEN</footer>
-
-<script>
-let scanner=null;
-let lastTicketId="";
-let lastTicketName="";
-
-function getTickets(){
-  return JSON.parse(localStorage.getItem("ms
+<footer>MASKING PROD © 2026</footer>
+</body>
+</html>
