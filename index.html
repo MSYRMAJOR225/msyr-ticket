@@ -1,55 +1,95 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MSYR TICKET</title>
+<title>MSYR TICKET - MASKING PROD</title>
 <style>
+*{box-sizing:border-box}
 body{margin:0;font-family:Arial;background:#111;color:white;text-align:center}
 header{background:#ffcc00;color:black;padding:20px}
-.card{background:#222;margin:15px;padding:15px;border-radius:10px}
-.pay{background:#ffcc00;color:black;margin:15px;padding:15px;border-radius:10px}
-button{background:#25D366;border:none;padding:15px;border-radius:10px;width:90%}
-a{color:white;text-decoration:none;font-weight:bold}
-img{width:220px;background:white;padding:10px;border-radius:10px}
+.card{background:#222;margin:15px;padding:20px;border-radius:12px}
+.pay{background:#ffcc00;color:black;margin:15px;padding:20px;border-radius:12px}
+h2{color:#ffcc00}
+button{background:#25D366;border:0;padding:16px;border-radius:10px;width:100%;font-size:17px;font-weight:bold}
+button a{color:white;text-decoration:none}
+.qr{width:210px;max-width:90%;background:white;padding:10px;border-radius:10px}
+.number{font-size:19px;font-weight:bold}
+footer{padding:20px;color:#aaa}
 </style>
 </head>
 <body>
+
 <header>
-<h1>MSYR TICKET</h1>
-<p>MASKING PROD</p>
+<h1>🎟️ MSYR TICKET</h1>
+<p>MASKING PROD PRÉSENTE</p>
 </header>
 
-<h2 style="color:#ffcc00">MSYR MAJOR<br>La soirée immortelle du chef bandit</h2>
+<h2>MSYR MAJOR</h2>
 
 <div class="card">
-<h3>Le 24 Décembre 2026</h3>
-<p>📍 Au Maquis Petit Paris de Glanlé<br>🕐 À partir de 20h<br><b>Entrée : 2500 FCFA</b></p>
+<h3>LA SOIRÉE IMMORTELLE DU CHEF BANDIT</h3>
+<p>
+📅 24 Décembre 2026<br>
+📍 Maquis Petit Paris de Glanlé<br>
+🕗 À partir de 20h
+</p>
+<h2>2 500 FCFA</h2>
 </div>
 
 <div class="pay">
-<h3>💳 Payer ton ticket :</h3>
-<p><b>Wave :</b><br>05 03 66 42 66<br>07 49 20 16 97</p>
-<p><b>MTN MoMo :</b><br>05 03 66 42 66</p>
-<p>Après paiement, envoie la capture sur WhatsApp</p>
+<h2 style="color:black">💳 PAIEMENT DES TICKETS</h2>
+<h3>💙 WAVE</h3>
+<p class="number">05 03 66 42 66</p>
+<p class="number">07 49 20 16 97</p>
+<hr>
+<h3>💛 MTN MONEY</h3>
+<p class="number">05 03 66 42 66</p>
+<p>Effectue ton paiement et conserve ta preuve.</p>
 </div>
 
 <div class="card">
-<button><a href="https://wa.me/+2250749201697?text=Bonjour%20je%20veux%20mon%20ticket%20MSYR">Commander sur WhatsApp</a></button>
-<p>WhatsApp : +225 07 49 20 16 97<br>MSYR TICKET</p>
+<h2>ACHÈTE TON TICKET ICI</h2>
+<button>
+<a href="https://wa.me/2250749201697?text=Bonjour%20MSYR%20TICKET%2C%20je%20veux%20acheter%20mon%20ticket%20de%202500%20FCFA.">
+ACHÈTE TON TICKET ICI
+</a>
+</button>
+<p>WhatsApp : +225 07 49 20 16 97</p>
 </div>
 
-<div class="card" style="text-align:center">
-<h2>📷 Scanne pour payer ton ticket</h2>
-<p>Scanne avec ton téléphone, paie, puis envoie la capture</p>
-<h3>💙 Wave 1 / 💛 MTN MoMo</h3>
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=0503664266">
-<p><b>05 03 66 42 66</b><br>Wave + MTN MoMo</p>
-<h3>💙 Wave 2</h3>
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=0749201697">
-<p><b>07 49 20 16 97</b><br>Wave</p>
-<p>Après paiement, envoie la capture sur WhatsApp</p>
+<div class="card">
+<h2>📷 SCANNE POUR PAYER</h2>
+<p>Choisis ton moyen de paiement.</p>
+
+<h3>💙 WAVE</h3>
+<img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=0503664266" alt="QR Wave">
+<p class="number">05 03 66 42 66</p>
+
+<img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=0749201697" alt="QR Wave">
+<p class="number">07 49 20 16 97</p>
+
+<hr>
+<h3>💛 MTN MONEY</h3>
+<img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=0503664266" alt="QR MTN Money">
+<p class="number">05 03 66 42 66</p>
+
+<p>Après paiement, envoie ta preuve sur WhatsApp.</p>
 </div>
+
+<div class="card">
+<h2>📷 CONTRÔLE DES TICKETS</h2>
+<p>Chaque client recevra un QR Code personnel après confirmation de son paiement.</p>
+<p>À l'entrée, MASKING PROD scannera le ticket pour vérifier sa validité.</p>
+<p>✅ TICKET VALIDE<br>❌ DÉJÀ UTILISÉ<br>❌ TICKET INVALIDE</p>
+</div>
+
+<footer>
+MSYR TICKET © 2026<br>
+Propriété de MASKING PROD<br>
+MSYR MAJOR
+</footer>
 
 </body>
 </html>
