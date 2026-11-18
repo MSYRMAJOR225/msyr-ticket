@@ -9,71 +9,85 @@
 <style>
 *{box-sizing:border-box}
 body{
- margin:0;
- background:#111;
- color:white;
- font-family:Arial,sans-serif;
- text-align:center;
+  margin:0;
+  background:#111;
+  color:white;
+  font-family:Arial,sans-serif;
+  text-align:center;
 }
 header{
- background:#ffcc00;
- color:black;
- padding:20px;
+  background:#ffcc00;
+  color:black;
+  padding:20px;
 }
 .card{
- background:#242424;
- margin:15px;
- padding:20px;
- border-radius:15px;
+  background:#242424;
+  margin:15px;
+  padding:20px;
+  border-radius:15px;
 }
 .pay{
- background:#ffcc00;
- color:black;
- margin:15px;
- padding:20px;
- border-radius:15px;
+  background:#ffcc00;
+  color:black;
+  margin:15px;
+  padding:20px;
+  border-radius:15px;
 }
 h2{color:#ffcc00}
 .pay h2{color:black}
 .number{font-size:21px;font-weight:bold}
 .method{
- background:white;
- color:black;
- padding:15px;
- margin:12px 0;
- border-radius:12px;
+  background:white;
+  color:black;
+  padding:15px;
+  margin:12px 0;
+  border-radius:12px;
 }
-button,input{
- width:100%;
- padding:14px;
- margin:6px 0;
- border:0;
- border-radius:9px;
- font-size:16px;
+button,input,select{
+  width:100%;
+  padding:14px;
+  margin:6px 0;
+  border:0;
+  border-radius:9px;
+  font-size:16px;
 }
 button{
- background:#25D366;
- color:white;
- font-weight:bold;
+  background:#25D366;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
 }
-input{background:white}
+input,select{background:white}
 .copy{background:#222}
 .price{
- color:#ffcc00;
- font-size:28px;
- font-weight:bold;
+  color:#ffcc00;
+  font-size:28px;
+  font-weight:bold;
 }
-.admin{
- border:2px solid #ffcc00;
-}
+.admin{border:2px solid #ffcc00}
 .status{
- padding:12px;
- border-radius:8px;
- background:#333;
- margin:10px 0;
+  padding:12px;
+  border-radius:8px;
+  background:#333;
+  margin:10px 0;
+  overflow-wrap:anywhere;
 }
+.ticket{
+  background:white;
+  color:black;
+  padding:20px;
+  border-radius:12px;
+  margin-top:15px;
+}
+.ticket button{background:#222}
 footer{padding:20px;color:#aaa}
+#reader{
+  background:white;
+  color:black;
+  margin-top:15px;
+}
 </style>
+
 </head>
 
 <body>
@@ -100,12 +114,23 @@ footer{padding:20px;color:#aaa}
 
 <div class="method">
 <h3>💙 WAVE MONEY</h3>
+
 <p class="number">05 03 66 42 66</p>
+<a href="https://ci.mmapp.wave.com/web/referrals/c/2FTJQT"
+target="_blank" rel="noopener">
+<button type="button">OUVRIR WAVE – COMPTE 1</button>
+</a>
 <button class="copy" onclick="copier('0503664266')">
 COPIER LE NUMÉRO
 </button>
 
+<hr>
+
 <p class="number">07 49 20 16 97</p>
+<a href="https://ci.mmapp.wave.com/web/referrals/c/WMWGL7"
+target="_blank" rel="noopener">
+<button type="button">OUVRIR WAVE – COMPTE 2</button>
+</a>
 <button class="copy" onclick="copier('0749201697')">
 COPIER LE NUMÉRO
 </button>
@@ -115,55 +140,71 @@ COPIER LE NUMÉRO
 <h3>💛 MTN MONEY</h3>
 <p class="number">05 03 66 42 66</p>
 <button class="copy" onclick="copier('0503664266')">
-COPIER LE NUMÉRO
+COPIER LE NUMÉRO MTN
 </button>
 </div>
 
 <p>Effectue ton paiement et conserve ta preuve.</p>
-<p>Ton paiement sera vérifié par MASKING PROD.</p>
+<p>Ton paiement sera vérifié par MASKING PROD avant la délivrance du ticket.</p>
 </div>
 
 <div class="card">
 <h2>ACHÈTE TON TICKET</h2>
-<p>Contacte MASKING PROD pour envoyer ta preuve de paiement.</p>
-
+<p>Après ton paiement, contacte MASKING PROD et envoie ta preuve.</p>
 <a href="https://wa.me/225749201697?text=Bonjour%20MSYR%20TICKET%2C%20je%20veux%20acheter%20un%20ticket%20de%202500%20FCFA.">
-<button>ACHÈTE TON TICKET ICI</button>
+<button>ENVOYER MA PREUVE SUR WHATSAPP</button>
 </a>
 </div>
 
-<!-- ESPACE ADMINISTRATEUR -->
 <div class="card admin">
 <h2>🔐 ADMIN MASKING PROD</h2>
-
 <p>Accès réservé à l'administrateur.</p>
 
-<input type="password"
-id="adminPassword"
+<input type="password" id="adminPassword"
 placeholder="Mot de passe administrateur">
 
-<button onclick="connexion()">
-SE CONNECTER
-</button>
+<button onclick="connexion()">SE CONNECTER</button>
 
 <div id="adminPanel" hidden>
 
-<h3>TABLEAU DE CONTRÔLE</h3>
+<hr>
 
-<div class="status">
-PAIEMENT À VÉRIFIER
-</div>
+<h3>1. VÉRIFICATION DU PAIEMENT</h3>
+<p>Vérifie d'abord que l'argent est réellement arrivé sur ton compte Wave ou MTN.</p>
 
-<p>Vérifie d'abord que l'argent est arrivé sur ton compte.</p>
+<input id="clientName" placeholder="Nom du client">
 
-<input id="clientName"
-placeholder="Nom du client">
+<select id="paymentMethod">
+<option value="WAVE">Wave Money</option>
+<option value="MTN">MTN Money</option>
+</select>
 
-<button onclick="creerTicket()">
-CONFIRMER ET CRÉER UN TICKET
+<input id="paymentReference"
+placeholder="Référence de transaction (facultatif)">
+
+<button onclick="confirmerPaiement()">
+CONFIRMER LE PAIEMENT ET DÉLIVRER LE TICKET
 </button>
 
 <div id="ticketResult"></div>
+
+<hr>
+
+<h3>2. SCANNER LES TICKETS À L'ENTRÉE</h3>
+<p>Utilise la caméra de ce téléphone pour scanner le QR code.</p>
+
+<button onclick="demarrerScanner()">OUVRIR LE SCANNER</button>
+<button class="copy" onclick="arreterScanner()">ARRÊTER LE SCANNER</button>
+
+<div id="reader"></div>
+<div id="scanResult" class="status">
+En attente d'un scan.
+</div>
+
+<hr>
+
+<h3>3. LISTE DES TICKETS ENREGISTRÉS SUR CE TÉLÉPHONE</h3>
+<div id="ticketList"></div>
 
 </div>
 </div>
@@ -174,61 +215,196 @@ Propriété de MASKING PROD<br>
 MSYR MAJOR
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://unpkg.com/html5-qrcode"></script>
+
 <script>
 function copier(numero){
- navigator.clipboard.writeText(numero)
- .then(()=>alert("Numéro copié : "+numero))
- .catch(()=>alert("Numéro : "+numero));
+  navigator.clipboard.writeText(numero)
+  .then(()=>alert("Numéro copié : "+numero))
+  .catch(()=>alert("Numéro : "+numero));
 }
 
-// DÉMONSTRATION UNIQUEMENT
-// Ce mot de passe n'est PAS une sécurité réelle.
+// Démonstration locale : ce mot de passe n'est pas une sécurité réelle.
 const DEMO_PASSWORD = "MSYR2026";
+let scanner = null;
 
 function connexion(){
- const password =
- document.getElementById("adminPassword").value;
+  const password = document.getElementById("adminPassword").value;
 
- if(password === DEMO_PASSWORD){
-  document.getElementById("adminPanel").hidden=false;
-  alert("Bienvenue dans l'espace de démonstration.");
- }else{
-  alert("Mot de passe incorrect.");
- }
+  if(password === DEMO_PASSWORD){
+    document.getElementById("adminPanel").hidden = false;
+    afficherTickets();
+    alert("Bienvenue dans l'espace administrateur.");
+  }else{
+    alert("Mot de passe incorrect.");
+  }
 }
 
-function creerTicket(){
- const nom =
- document.getElementById("clientName").value.trim();
+function lireTickets(){
+  return JSON.parse(localStorage.getItem("msyrTickets") || "[]");
+}
 
- if(!nom){
-  alert("Entre le nom du client.");
-  return;
- }
+function enregistrerTickets(tickets){
+  localStorage.setItem("msyrTickets", JSON.stringify(tickets));
+}
 
- const numero =
- "MSYR-" + Date.now();
+function confirmerPaiement(){
+  const nom = document.getElementById("clientName").value.trim();
+  const methode = document.getElementById("paymentMethod").value;
+  const reference = document.getElementById("paymentReference").value.trim();
 
- document.getElementById("ticketResult").innerHTML =
- "<div class='status'>"+
- "TICKET DE DÉMONSTRATION<br><br>"+
- "Client : "+escapeHTML(nom)+"<br>"+
- "Numéro : "+numero+"<br>"+
- "Statut : NON VÉRIFIÉ À L'ENTRÉE"+
- "</div>";
+  if(!nom){
+    alert("Entre le nom du client.");
+    return;
+  }
 
+  if(!confirm("As-tu personnellement vérifié que le paiement est arrivé sur ton compte ?")){
+    alert("Ticket non délivré. Vérifie d'abord le paiement.");
+    return;
+  }
+
+  const numero = "MSYR-" + Date.now();
+
+  const ticket = {
+    numero: numero,
+    nom: nom,
+    methode: methode,
+    reference: reference,
+    statut: "VALIDE",
+    utilise: false,
+    date: new Date().toLocaleString("fr-FR")
+  };
+
+  const tickets = lireTickets();
+  tickets.push(ticket);
+  enregistrerTickets(tickets);
+
+  afficherTicket(ticket);
+
+  document.getElementById("clientName").value = "";
+  document.getElementById("paymentReference").value = "";
+
+  afficherTickets();
+}
+
+function afficherTicket(ticket){
+  const resultat = document.getElementById("ticketResult");
+
+  resultat.innerHTML = `
+    <div class="ticket">
+      <h2>🎟️ TICKET MSYR TICKET</h2>
+      <h3>LA SOIRÉE IMMORTELLE DU CHEF BANDIT</h3>
+      <p>Client : ${escapeHTML(ticket.nom)}</p>
+      <p>Numéro : ${escapeHTML(ticket.numero)}</p>
+      <p>Prix : 2 500 FCFA</p>
+      <p>Statut : PAIEMENT CONFIRMÉ</p>
+      <div id="qrcode"></div>
+      <p>Présente ce QR code à l'entrée.</p>
+    </div>
+  `;
+
+  new QRCode(document.getElementById("qrcode"), {
+    text: ticket.numero,
+    width: 180,
+    height: 180
+  });
+}
+
+function afficherTickets(){
+  const tickets = lireTickets();
+  const zone = document.getElementById("ticketList");
+
+  if(tickets.length === 0){
+    zone.innerHTML = "<p>Aucun ticket délivré.</p>";
+    return;
+  }
+
+  zone.innerHTML = tickets.map(t => `
+    <div class="status">
+      Client : ${escapeHTML(t.nom)}<br>
+      Ticket : ${escapeHTML(t.numero)}<br>
+      Statut : ${t.utilise ? "DÉJÀ UTILISÉ" : "VALIDE"}<br>
+      Paiement : ${escapeHTML(t.methode)}
+    </div>
+  `).join("");
+}
+
+function demarrerScanner(){
+  if(typeof Html5Qrcode === "undefined"){
+    alert("Le scanner n'a pas pu être chargé. Vérifie ta connexion Internet.");
+    return;
+  }
+
+  if(scanner){
+    return;
+  }
+
+  scanner = new Html5Qrcode("reader");
+
+  scanner.start(
+    { facingMode: "environment" },
+    { fps: 10, qrbox: { width: 250, height: 250 } },
+    (texte) => verifierTicket(texte),
+    () => {}
+  ).catch((erreur)=>{
+    scanner = null;
+    alert("Impossible d'ouvrir la caméra. Autorise l'accès à la caméra.");
+  });
+}
+
+function arreterScanner(){
+  if(scanner){
+    scanner.stop().then(()=>{
+      scanner.clear();
+      scanner = null;
+    }).catch(()=>{
+      scanner = null;
+    });
+  }
+}
+
+function verifierTicket(numero){
+  const tickets = lireTickets();
+  const index = tickets.findIndex(t => t.numero === numero);
+  const resultat = document.getElementById("scanResult");
+
+  if(index === -1){
+    resultat.innerHTML = "❌ TICKET INCONNU : aucun ticket correspondant.";
+    return;
+  }
+
+  if(tickets[index].statut !== "VALIDE"){
+    resultat.innerHTML = "❌ TICKET NON VALIDÉ.";
+    return;
+  }
+
+  if(tickets[index].utilise){
+    resultat.innerHTML = "❌ TICKET DÉJÀ UTILISÉ !";
+    return;
+  }
+
+  tickets[index].utilise = true;
+  enregistrerTickets(tickets);
+
+  resultat.innerHTML =
+    "✅ TICKET ACCEPTÉ !<br>" +
+    "Client : " + escapeHTML(tickets[index].nom) +
+    "<br>Numéro : " + escapeHTML(tickets[index].numero);
+
+  afficherTickets();
 }
 
 function escapeHTML(texte){
- return texte.replace(/[&<>"']/g,function(c){
-  return {
-   '&':'&amp;',
-   '<':'&lt;',
-   '>':'&gt;',
-   '"':'&quot;',
-   "'":'&#39;'
-  }[c];
- });
+  return String(texte).replace(/[&<>"']/g,function(c){
+    return {
+      '&':'&amp;',
+      '<':'&lt;',
+      '>':'&gt;',
+      '"':'&quot;',
+      "'":'&#39;'
+    }[c];
+  });
 }
 </script>
 
