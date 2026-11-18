@@ -1,58 +1,341 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MSYR TICKET - MASKING PROD</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MSYR TICKET - ADMIN</title>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="https://unpkg.com/html5-qrcode"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#101010;color:white;text-align:center}
-header{background:linear-gradient(135deg,#a90000,#171717);padding:25px 12px}
-header h2{color:#ffd700}
-.event{padding:25px 15px}
-.artist{color:#ffcc00;font-size:34px;font-weight:bold}
-.event h2{color:#ffcc00}
-.payment{background:white;color:#222;border-radius:15px;padding:20px;margin:18px auto;max-width:340px}
-.payment img.logo{width:120px;height:65px;object-fit:contain}
-.qr{width:155px;height:155px;margin:12px auto;display:block}
-.number{font-size:21px;font-weight:bold;color:#111}
-.btn{display:block;background:#25D366;color:white;padding:18px;border-radius:12px;font-weight:bold;font-size:18px;text-decoration:none;margin:20px auto;max-width:320px}
+body{margin:0;background:#101010;color:white;font-family:Arial;text-align:center}
+header{background:#870000;padding:22px}
+h1{color:#ffcc00}
+main{padding:15px;max-width:500px;margin:auto}
+.card{background:white;color:#222;padding:20px;border-radius:15px;margin:15px 0}
+input,select{width:95%;padding:13px;margin:8px 0;border:1px solid #ccc;border-radius:8px;box-sizing:border-box}
+button{padding:13px 18px;border:0;border-radius:8px;background:#b00000;color:white;font-weight:bold;margin:7px;cursor:pointer}
+.green{background:#168c45}
+#reader{width:100%;margin:auto;color:#222}
+#qr{display:flex;justify-content:center;margin:15px}
+.result{padding:15px;border-radius:10px;margin-top:12px;font-weight:bold}
 footer{padding:20px;color:#aaa}
+.hidden{display:none}
 </style>
 </head>
+
 <body>
 <header>
-<h2>🔥 MASKING PROD PRÉSENTE 🔥</h2>
-<h1>MSYR TICKET</h1>
-<p>Votre plateforme officielle de billetterie</p>
+<h1>MASKING PROD</h1>
+<h2>MSYR TICKET</h2>
+<p>ESPACE ADMINISTRATEUR</p>
 </header>
-<section class="event">
-<div class="artist">MSYR MAJOR</div>
-<h2>LA SOIRÉE IMMORTELLE<br>DU CHEF BANDIT</h2>
-<h3>📅 24 DÉCEMBRE 2026</h3>
-<h3>📍 MAQUIS PETIT PARIS DE GLANLÉ</h3>
-<h3>🕗 À PARTIR DE 20H</h3>
-<h3 style="color:#ffcc00">ENTRÉE : 2500 FCFA</h3>
+
+<main>
+
+<!-- CONNEXION -->
+<section id="login" class="card">
+<h2>Connexion administrateur</h2>
+<input id="email" type="email" placeholder="Adresse email">
+<input id="password" type="password" placeholder="Mot de passe">
+<button onclick="login()">SE CONNECTER</button>
+<p id="loginMessage"></p>
 </section>
-<h2>💳 CHOISISSEZ VOTRE MOYEN DE PAIEMENT</h2>
-<div class="payment">
-<img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/8/81/Wave_Logo.svg" alt="Wave Money">
-<h2>WAVE MONEY</h2>
-<p>Numéro 1</p><div class="number">05 03 66 42 66</div>
-<img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Wave%20Money%200503664266" alt="QR Wave">
-<p>Scannez pour afficher le numéro</p><hr>
-<p>Numéro 2</p><div class="number">07 49 20 16 97</div>
-<img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Wave%20Money%200749201697" alt="QR Wave">
-<p>Scannez pour afficher le numéro</p>
+
+<!-- TABLEAU DE BORD -->
+<section id="dashboard" class="hidden">
+
+<div class="card">
+<h2>LA SOIRÉE IMMORTELLE DU CHEF BANDIT</h2>
+<p>MSYR MAJOR</p>
+<p>24 DÉCEMBRE 2026</p>
+<p>MAQUIS PETIT PARIS DE GLANLÉ</p>
+<p>ENTRÉE : 2 500 FCFA</p>
 </div>
-<div class="payment">
-<img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/9/93/MTN_Logo.svg" alt="MTN Mobile Money">
-<h2>MTN MOBILE MONEY</h2>
-<div class="number">05 03 66 42 66</div>
-<img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=MTN%20Money%200503664266" alt="QR MTN">
-<p>Scannez pour afficher le numéro</p>
+
+<div class="card">
+<h2>1. DÉLIVRER UN TICKET</h2>
+<p>Vérifie d'abord que le paiement est bien reçu.</p>
+
+<input id="clientName" placeholder="Nom du client">
+<input id="clientPhone" placeholder="Téléphone du client">
+
+<select id="paymentMethod">
+<option value="WAVE">Wave Money</option>
+<option value="MTN">MTN Mobile Money</option>
+</select>
+
+<input id="paymentReference" placeholder="Référence du paiement (facultatif)">
+
+<button class="green" onclick="createTicket()">
+CONFIRMER LE PAIEMENT ET CRÉER LE TICKET
+</button>
+
+<div id="ticketResult"></div>
+<div id="qr"></div>
+<button id="printButton" class="hidden" onclick="window.print()">
+IMPRIMER LE TICKET
+</button>
 </div>
-<a class="btn" href="https://wa.me/2250749201697?text=Bonjour%20je%20veux%20acheter%20mon%20ticket%20MSYR%202500F">ACHÈTE TON TICKET ICI ✅</a>
-<p>Après paiement, envoie ta capture sur WhatsApp</p>
-<footer><h3>MASKING PROD</h3><p>MSYR TICKET © 2026</p><p>Merci pour votre confiance !</p></footer>
+
+<div class="card">
+<h2>2. SCANNER UN TICKET</h2>
+<p>Autorise la caméra de ton téléphone.</p>
+<button onclick="startScanner()">OUVRIR LE SCANNER</button>
+<button onclick="stopScanner()">ARRÊTER LE SCANNER</button>
+<div id="reader"></div>
+<div id="scanResult"></div>
+</div>
+
+<div class="card">
+<h2>3. STATISTIQUES</h2>
+<p>Tickets délivrés : <strong id="total">0</strong></p>
+<p>Entrées validées : <strong id="used">0</strong></p>
+<p>Tickets disponibles : <strong id="available">0</strong></p>
+<button onclick="loadStats()">ACTUALISER</button>
+</div>
+
+<button onclick="logout()">DÉCONNEXION</button>
+</section>
+</main>
+
+<footer>MASKING PROD © 2026</footer>
+
+<script>
+// 1. CONFIGURATION FIREBASE
+const firebaseConfig = {
+  apiKey: "TON_API_KEY",
+  authDomain: "TON_PROJET.firebaseapp.com",
+  projectId: "TON_PROJECT_ID",
+  storageBucket: "TON_PROJET.firebasestorage.app",
+  messagingSenderId: "TON_SENDER_ID",
+  appId: "TON_APP_ID"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+const EVENT_ID = "CHEF_BANDIT_24_DECEMBRE_2026";
+const PRICE = 2500;
+
+let scanner = null;
+let lastScan = "";
+
+// 2. CONNEXION
+function login(){
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  auth.signInWithEmailAndPassword(email,password)
+    .catch(error=>{
+      document.getElementById("loginMessage").textContent =
+      "Erreur : " + error.message;
+    });
+}
+
+auth.onAuthStateChanged(user=>{
+  if(user){
+    document.getElementById("login").classList.add("hidden");
+    document.getElementById("dashboard").classList.remove("hidden");
+    loadStats();
+  }else{
+    document.getElementById("login").classList.remove("hidden");
+    document.getElementById("dashboard").classList.add("hidden");
+  }
+});
+
+function logout(){
+  auth.signOut();
+}
+
+// 3. CRÉATION DU TICKET APRÈS VÉRIFICATION DU PAIEMENT
+async function createTicket(){
+  if(!auth.currentUser) return;
+
+  const name = document.getElementById("clientName").value.trim();
+  const phone = document.getElementById("clientPhone").value.trim();
+  const method = document.getElementById("paymentMethod").value;
+  const reference = document.getElementById("paymentReference").value.trim();
+
+  if(!name || !phone){
+    alert("Entre le nom et le téléphone du client.");
+    return;
+  }
+
+  const ticketRef = db.collection("tickets").doc();
+
+  try{
+    await ticketRef.set({
+      eventId: EVENT_ID,
+      name: name,
+      phone: phone,
+      paymentMethod: method,
+      paymentReference: reference,
+      price: PRICE,
+      paymentVerified: true,
+      status: "valid",
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      scannedAt: null
+    });
+
+    document.getElementById("ticketResult").innerHTML =
+      "<div class='result' style='background:#d8f5df;color:#12642b'>" +
+      "PAIEMENT CONFIRMÉ — TICKET CRÉÉ<br>" +
+      "Client : " + escapeHTML(name) +
+      "<br>Prix : 2 500 FCFA</div>";
+
+    document.getElementById("qr").innerHTML = "";
+
+    new QRCode(document.getElementById("qr"),{
+      text: ticketRef.id,
+      width: 190,
+      height: 190
+    });
+
+    document.getElementById("printButton").classList.remove("hidden");
+
+    document.getElementById("clientName").value = "";
+    document.getElementById("clientPhone").value = "";
+    document.getElementById("paymentReference").value = "";
+
+    loadStats();
+
+  }catch(error){
+    alert("Erreur de création : " + error.message);
+  }
+}
+
+function escapeHTML(value){
+  return value.replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",
+    '"':"&quot;","'":"&#39;"
+  }[c]));
+}
+
+// 4. SCANNER
+async function startScanner(){
+  if(!auth.currentUser) return;
+
+  try{
+    if(scanner) await stopScanner();
+
+    scanner = new Html5Qrcode("reader");
+
+    await scanner.start(
+      {facingMode:"environment"},
+      {fps:10,qrbox:{width:230,height:230}},
+      async decodedText=>{
+        if(decodedText === lastScan) return;
+        lastScan = decodedText;
+
+        await stopScanner();
+        await verifyTicket(decodedText);
+
+        setTimeout(()=>{lastScan="";},3000);
+      }
+    );
+  }catch(error){
+    document.getElementById("scanResult").textContent =
+      "Impossible d'ouvrir la caméra : " + error;
+  }
+}
+
+async function stopScanner(){
+  if(scanner && scanner.isScanning){
+    await scanner.stop();
+  }
+}
+
+// 5. VÉRIFICATION UNIQUE DU TICKET
+async function verifyTicket(ticketId){
+  const result = document.getElementById("scanResult");
+
+  if(!auth.currentUser) return;
+
+  try{
+    const ref = db.collection("tickets").doc(ticketId);
+
+    const outcome = await db.runTransaction(async transaction=>{
+      const snap = await transaction.get(ref);
+
+      if(!snap.exists){
+        return {status:"unknown"};
+      }
+
+      const data = snap.data();
+
+      if(data.eventId !== EVENT_ID || data.paymentVerified !== true){
+        return {status:"invalid"};
+      }
+
+      if(data.status !== "valid"){
+        return {status:"used",name:data.name};
+      }
+
+      transaction.update(ref,{
+        status:"used",
+        scannedAt:firebase.firestore.FieldValue.serverTimestamp()
+      });
+
+      return {status:"success",name:data.name};
+    });
+
+    if(outcome.status === "success"){
+      result.innerHTML =
+        "<div class='result' style='background:#c9f7d4;color:#075b23'>" +
+        "✅ ENTRÉE AUTORISÉE<br>" +
+        "Client : " + escapeHTML(outcome.name) +
+        "</div>";
+    }else if(outcome.status === "used"){
+      result.innerHTML =
+        "<div class='result' style='background:#ffe0b2;color:#8a4200'>" +
+        "⚠️ TICKET DÉJÀ SCANNÉ<br>" +
+        "Client : " + escapeHTML(outcome.name) +
+        "</div>";
+    }else{
+      result.innerHTML =
+        "<div class='result' style='background:#ffd6d6;color:#a00000'>" +
+        "❌ TICKET INVALIDE OU INCONNU</div>";
+    }
+
+    loadStats();
+
+  }catch(error){
+    result.textContent =
+      "Erreur de vérification : " + error.message;
+  }
+}
+
+// 6. STATISTIQUES
+async function loadStats(){
+  if(!auth.currentUser) return;
+
+  try{
+    const snap = await db.collection("tickets")
+      .where("eventId","==",EVENT_ID).get();
+
+    let total = snap.size;
+    let used = 0;
+
+    snap.forEach(doc=>{
+      if(doc.data().status === "used") used++;
+    });
+
+    document.getElementById("total").textContent = total;
+    document.getElementById("used").textContent = used;
+    document.getElementById("available").textContent = total-used;
+
+  }catch(error){
+    console.error(error);
+  }
+}
+</script>
 </body>
 </html>
