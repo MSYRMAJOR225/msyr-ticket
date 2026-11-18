@@ -3,69 +3,76 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MSYR TICKET - MASKING PROD</title>
 
 <style>
 *{box-sizing:border-box}
 body{
  margin:0;
- font-family:Arial,sans-serif;
  background:#111;
  color:white;
+ font-family:Arial,sans-serif;
  text-align:center;
 }
 header{
  background:#ffcc00;
  color:black;
- padding:22px;
+ padding:20px;
 }
-header h1{margin:0;font-size:30px}
-.card,.pay{
- margin:16px;
- padding:22px;
+.card{
+ background:#242424;
+ margin:15px;
+ padding:20px;
  border-radius:15px;
 }
-.card{background:#242424}
 .pay{
  background:#ffcc00;
  color:black;
+ margin:15px;
+ padding:20px;
+ border-radius:15px;
 }
 h2{color:#ffcc00}
 .pay h2{color:black}
-.number{
- font-size:21px;
- font-weight:bold;
-}
+.number{font-size:21px;font-weight:bold}
 .method{
- background:#fff;
- color:#111;
+ background:white;
+ color:black;
  padding:15px;
- border-radius:12px;
  margin:12px 0;
+ border-radius:12px;
+}
+button,input{
+ width:100%;
+ padding:14px;
+ margin:6px 0;
+ border:0;
+ border-radius:9px;
+ font-size:16px;
 }
 button{
- border:0;
- padding:15px;
- border-radius:10px;
- width:100%;
- font-size:16px;
- font-weight:bold;
- cursor:pointer;
  background:#25D366;
  color:white;
-}
-.copy{
- background:#222;
- margin-top:8px;
-}
-a{color:white;text-decoration:none}
-.price{
- font-size:28px;
- color:#ffcc00;
  font-weight:bold;
 }
-footer{padding:22px;color:#aaa}
+input{background:white}
+.copy{background:#222}
+.price{
+ color:#ffcc00;
+ font-size:28px;
+ font-weight:bold;
+}
+.admin{
+ border:2px solid #ffcc00;
+}
+.status{
+ padding:12px;
+ border-radius:8px;
+ background:#333;
+ margin:10px 0;
+}
+footer{padding:20px;color:#aaa}
 </style>
 </head>
 
@@ -73,106 +80,92 @@ footer{padding:22px;color:#aaa}
 
 <header>
 <h1>🎟️ MSYR TICKET</h1>
-<p><strong>MASKING PROD PRÉSENTE</strong></p>
+<p>MASKING PROD PRÉSENTE</p>
 </header>
 
 <h2>MSYR MAJOR</h2>
 
 <div class="card">
 <h3>LA SOIRÉE IMMORTELLE DU CHEF BANDIT</h3>
-
 <p>
 📅 24 Décembre 2026<br><br>
 📍 Maquis Petit Paris de Glanlé<br><br>
 🕗 À partir de 20h
 </p>
-
 <div class="price">2 500 FCFA</div>
-<p>Prix du ticket</p>
 </div>
 
 <div class="pay">
-
 <h2>💳 PAIEMENT DES TICKETS</h2>
 
 <div class="method">
 <h3>💙 WAVE MONEY</h3>
-
 <p class="number">05 03 66 42 66</p>
-<button class="copy"
-onclick="copier('0503664266')">
+<button class="copy" onclick="copier('0503664266')">
 COPIER LE NUMÉRO
 </button>
 
-<hr>
-
 <p class="number">07 49 20 16 97</p>
-<button class="copy"
-onclick="copier('0749201697')">
+<button class="copy" onclick="copier('0749201697')">
 COPIER LE NUMÉRO
 </button>
 </div>
 
 <div class="method">
-<h3>💛 MTN MOBILE MONEY</h3>
-
+<h3>💛 MTN MONEY</h3>
 <p class="number">05 03 66 42 66</p>
-<button class="copy"
-onclick="copier('0503664266')">
+<button class="copy" onclick="copier('0503664266')">
 COPIER LE NUMÉRO
 </button>
 </div>
 
-<p>
-Effectue ton paiement et conserve ta preuve.
-</p>
-
-<p>
-Ton ticket sera délivré après vérification personnelle
-par MASKING PROD.
-</p>
-
+<p>Effectue ton paiement et conserve ta preuve.</p>
+<p>Ton paiement sera vérifié par MASKING PROD.</p>
 </div>
 
 <div class="card">
+<h2>ACHÈTE TON TICKET</h2>
+<p>Contacte MASKING PROD pour envoyer ta preuve de paiement.</p>
 
-<h2>🎟️ ACHÈTE TON TICKET ICI</h2>
-
-<p>
-Contacte MASKING PROD sur WhatsApp
-pour envoyer ta preuve de paiement.
-</p>
-
-<a href="https://wa.me/225749201697?text=Bonjour%20MSYR%20TICKET%2C%20je%20veux%20acheter%20un%20ticket%20de%202500%20FCFA%20pour%20la%20Soir%C3%A9e%20Immortelle%20du%20Chef%20Bandit.">
-
+<a href="https://wa.me/225749201697?text=Bonjour%20MSYR%20TICKET%2C%20je%20veux%20acheter%20un%20ticket%20de%202500%20FCFA.">
 <button>ACHÈTE TON TICKET ICI</button>
-
 </a>
-
-<p>WhatsApp : +225 07 49 20 16 97</p>
-
 </div>
 
-<div class="card">
+<!-- ESPACE ADMINISTRATEUR -->
+<div class="card admin">
+<h2>🔐 ADMIN MASKING PROD</h2>
 
-<h2>📷 CONTRÔLE DES TICKETS</h2>
+<p>Accès réservé à l'administrateur.</p>
 
-<p>
-Chaque client recevra un QR Code personnel
-après confirmation de son paiement.
-</p>
+<input type="password"
+id="adminPassword"
+placeholder="Mot de passe administrateur">
 
-<p>
-À l'entrée, MASKING PROD scannera le ticket
-pour vérifier sa validité.
-</p>
+<button onclick="connexion()">
+SE CONNECTER
+</button>
 
-<p>
-✅ TICKET VALIDE<br><br>
-❌ DÉJÀ UTILISÉ<br><br>
-❌ TICKET INVALIDE
-</p>
+<div id="adminPanel" hidden>
 
+<h3>TABLEAU DE CONTRÔLE</h3>
+
+<div class="status">
+PAIEMENT À VÉRIFIER
+</div>
+
+<p>Vérifie d'abord que l'argent est arrivé sur ton compte.</p>
+
+<input id="clientName"
+placeholder="Nom du client">
+
+<button onclick="creerTicket()">
+CONFIRMER ET CRÉER UN TICKET
+</button>
+
+<div id="ticketResult"></div>
+
+</div>
 </div>
 
 <footer>
@@ -185,7 +178,57 @@ MSYR MAJOR
 function copier(numero){
  navigator.clipboard.writeText(numero)
  .then(()=>alert("Numéro copié : "+numero))
- .catch(()=>alert("Copie impossible. Voici le numéro : "+numero));
+ .catch(()=>alert("Numéro : "+numero));
+}
+
+// DÉMONSTRATION UNIQUEMENT
+// Ce mot de passe n'est PAS une sécurité réelle.
+const DEMO_PASSWORD = "MSYR2026";
+
+function connexion(){
+ const password =
+ document.getElementById("adminPassword").value;
+
+ if(password === DEMO_PASSWORD){
+  document.getElementById("adminPanel").hidden=false;
+  alert("Bienvenue dans l'espace de démonstration.");
+ }else{
+  alert("Mot de passe incorrect.");
+ }
+}
+
+function creerTicket(){
+ const nom =
+ document.getElementById("clientName").value.trim();
+
+ if(!nom){
+  alert("Entre le nom du client.");
+  return;
+ }
+
+ const numero =
+ "MSYR-" + Date.now();
+
+ document.getElementById("ticketResult").innerHTML =
+ "<div class='status'>"+
+ "TICKET DE DÉMONSTRATION<br><br>"+
+ "Client : "+escapeHTML(nom)+"<br>"+
+ "Numéro : "+numero+"<br>"+
+ "Statut : NON VÉRIFIÉ À L'ENTRÉE"+
+ "</div>";
+
+}
+
+function escapeHTML(texte){
+ return texte.replace(/[&<>"']/g,function(c){
+  return {
+   '&':'&amp;',
+   '<':'&lt;',
+   '>':'&gt;',
+   '"':'&quot;',
+   "'":'&#39;'
+  }[c];
+ });
 }
 </script>
 
