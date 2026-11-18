@@ -1,70 +1,58 @@
-
-<!-- MOYENS DE PAIEMENT MSYR TICKET -->
-<section class="payment-methods">
-  <h2>Choisissez votre moyen de paiement</h2>
-
-  <!-- WAVE -->
-  <div class="payment-option wave">
-    <img
-      src="https://upload.wikimedia.org/wikipedia/commons/8/81/Wave_Logo.svg"
-      alt="Wave Money">
-    <h3>Wave Money</h3>
-    <p>Paiement mobile sécurisé</p>
-  </div>
-
-  <!-- MTN -->
-  <div class="payment-option mtn">
-    <img
-      src="https://upload.wikimedia.org/wikipedia/commons/9/93/MTN_Logo.svg"
-      alt="MTN Mobile Money">
-    <h3>MTN Mobile Money</h3>
-    <p>Paiement mobile sécurisé</p>
-  </div>
-</section>
-
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MSYR TICKET - MASKING PROD</title>
 <style>
-.payment-methods {
-  text-align: center;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-}
-
-.payment-methods h2 {
-  color: #222;
-  margin-bottom: 20px;
-}
-
-.payment-option {
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 15px;
-  padding: 20px;
-  margin: 15px auto;
-  max-width: 320px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
-}
-
-.payment-option img {
-  width: 120px;
-  height: 65px;
-  object-fit: contain;
-}
-
-.payment-option h3 {
-  color: #222;
-  margin: 10px 0;
-}
-
-.payment-option p {
-  color: #666;
-  font-size: 14px;
-}
-
-.wave {
-  border-top: 4px solid #1685E8;
-}
-
-.mtn {
-  border-top: 4px solid #FFCC00;
-}
+body{margin:0;font-family:Arial,sans-serif;background:#101010;color:white;text-align:center}
+header{background:linear-gradient(135deg,#a90000,#171717);padding:25px 12px}
+header h2{color:#ffd700}
+.event{padding:25px 15px}
+.artist{color:#ffcc00;font-size:34px;font-weight:bold}
+.event h2{color:#ffcc00}
+.payment{background:white;color:#222;border-radius:15px;padding:20px;margin:18px auto;max-width:340px}
+.payment img.logo{width:120px;height:65px;object-fit:contain}
+.qr{width:155px;height:155px;margin:12px auto;display:block}
+.number{font-size:21px;font-weight:bold;color:#111}
+.btn{display:block;background:#25D366;color:white;padding:18px;border-radius:12px;font-weight:bold;font-size:18px;text-decoration:none;margin:20px auto;max-width:320px}
+footer{padding:20px;color:#aaa}
 </style>
+</head>
+<body>
+<header>
+<h2>🔥 MASKING PROD PRÉSENTE 🔥</h2>
+<h1>MSYR TICKET</h1>
+<p>Votre plateforme officielle de billetterie</p>
+</header>
+<section class="event">
+<div class="artist">MSYR MAJOR</div>
+<h2>LA SOIRÉE IMMORTELLE<br>DU CHEF BANDIT</h2>
+<h3>📅 24 DÉCEMBRE 2026</h3>
+<h3>📍 MAQUIS PETIT PARIS DE GLANLÉ</h3>
+<h3>🕗 À PARTIR DE 20H</h3>
+<h3 style="color:#ffcc00">ENTRÉE : 2500 FCFA</h3>
+</section>
+<h2>💳 CHOISISSEZ VOTRE MOYEN DE PAIEMENT</h2>
+<div class="payment">
+<img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/8/81/Wave_Logo.svg" alt="Wave Money">
+<h2>WAVE MONEY</h2>
+<p>Numéro 1</p><div class="number">05 03 66 42 66</div>
+<img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Wave%20Money%200503664266" alt="QR Wave">
+<p>Scannez pour afficher le numéro</p><hr>
+<p>Numéro 2</p><div class="number">07 49 20 16 97</div>
+<img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Wave%20Money%200749201697" alt="QR Wave">
+<p>Scannez pour afficher le numéro</p>
+</div>
+<div class="payment">
+<img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/9/93/MTN_Logo.svg" alt="MTN Mobile Money">
+<h2>MTN MOBILE MONEY</h2>
+<div class="number">05 03 66 42 66</div>
+<img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=MTN%20Money%200503664266" alt="QR MTN">
+<p>Scannez pour afficher le numéro</p>
+</div>
+<a class="btn" href="https://wa.me/2250749201697?text=Bonjour%20je%20veux%20acheter%20mon%20ticket%20MSYR%202500F">ACHÈTE TON TICKET ICI ✅</a>
+<p>Après paiement, envoie ta capture sur WhatsApp</p>
+<footer><h3>MASKING PROD</h3><p>MSYR TICKET © 2026</p><p>Merci pour votre confiance !</p></footer>
+</body>
+</html>
